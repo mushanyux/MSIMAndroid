@@ -198,7 +198,7 @@ public class MSDialogUtils {
         // 编辑
         BottomSheet.BottomSheetCell showInChatCell = new BottomSheet.BottomSheetCell(context, 0);
         showInChatCell.setBackground(ContextCompat.getDrawable(context, R.drawable.layout_bg));
-        showInChatCell.setTextAndIcon(context.getString(R.string.show_in_chat), R.mipmap.msg_m  essage, null, false);
+        showInChatCell.setTextAndIcon(context.getString(R.string.show_in_chat), R.mipmap.msg_message, null, false);
         contentLayout.addView(showInChatCell, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 48, Gravity.START | Gravity.TOP, 0, 0, 0, 0));
         showInChatCell.setOnClickListener(v -> {
             builder.getDismissRunnable().run();
