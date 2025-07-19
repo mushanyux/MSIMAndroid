@@ -21,7 +21,6 @@ import androidx.core.content.ContextCompat;
 import com.chat.base.R;
 
 /**
- * 2020-08-21 10:49
  * 圆形进度条
  */
 public class CircularProgressView extends View {
