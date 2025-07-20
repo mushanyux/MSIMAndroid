@@ -30,7 +30,6 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 /**
- * 4/8/21 12:54 PM
  * 圆形进度
  */
 public class ChatReadCountCircleProgressBar extends View {
