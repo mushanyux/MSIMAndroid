@@ -18,7 +18,6 @@ import java.util.List;
 
 /**
  * 快速选择侧边栏
- * Created by Sai on 16/3/25.
  */
 public class QuickSideBarView extends View {
 

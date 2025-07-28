@@ -80,7 +80,6 @@ public class MSUploader extends MSBaseModel {
 
     public interface IUploadBack {
         void onSuccess(String url);
-
         void onError();
     }
 }

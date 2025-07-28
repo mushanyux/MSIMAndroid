@@ -8,9 +8,6 @@ import android.widget.RelativeLayout;
 import com.chat.base.views.sidebar.tipsview.QuickSideBarTipsItemView;
 
 
-/**
- * Created by Sai on 16/3/26.
- */
 public class QuickSideBarTipsView extends RelativeLayout {
     private QuickSideBarTipsItemView mTipsView;
 

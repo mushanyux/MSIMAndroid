@@ -27,7 +27,6 @@ internal class Downloader private constructor() {
     private val mOkHttpClient: OkHttpClient by lazy {
         OkHttpClient.Builder()
             .callTimeout(TIME_OUT, TimeUnit.SECONDS)
-
             .build()
     }
 
@@ -104,7 +103,8 @@ internal class Downloader private constructor() {
     }
 
     fun multiDownload(
-        taskUrls: MutableList<String>, filenames: MutableList<String>,
+        taskUrls: MutableList<String>,
+        filenames: MutableList<String>,
         onDownload: OnDownload? = null,
         onComplete: OnComplete? = null,
         onFail: OnFail? = null
@@ -120,10 +120,8 @@ internal class Downloader private constructor() {
         }
         taskUrls.forEachIndexed { index, taskUrl ->
             validateNeedCallback(taskUrl, onDownload, onComplete, onFail)
-            download(taskUrl, filenames[index], onDownload)
+            download(taskUrl, filenames[index], onDownload, onComplete, onFail)
         }
-
-
     }
 
     private fun validateNeedCallback(
@@ -133,12 +131,10 @@ internal class Downloader private constructor() {
         onFail: OnFail? = null
     ) {
         if (onDownload == null && onComplete == null) {
-
         } else {
             val callback = Triple(onDownload, onComplete, onFail)
             mOnDownloadHashMap[taskUrl] = callback
         }
-
     }
 
     fun download(
@@ -152,20 +148,10 @@ internal class Downloader private constructor() {
         val request = Request.Builder()
             .url(taskUrl)
             .build()
-//        val type: String = when {
-//            taskUrl.validateMusicType() -> Environment.DIRECTORY_MUSIC
-//            taskUrl.validateVideoType() -> Environment.DIRECTORY_MOVIES
-//            taskUrl.validatePicType() -> Environment.DIRECTORY_PICTURES
-//            else -> {
-//                Environment.DIRECTORY_DOWNLOADS
-//            }
-//        }
-//        val dir = Environment.getExternalStoragePublicDirectory(type)
         val mFile = File(savePath)
         val task = Task(url = taskUrl, request = request, file = mFile)
         mDownloadTasks[taskUrl] = task
         realDownload(task)
-
     }
 
     private fun realDownload(mTask: Task) {
@@ -197,47 +183,13 @@ internal class Downloader private constructor() {
                     } else {
                         Log.e(TAG, response.message)
                     }
-
                 }
-
             })
     }
 
     private fun calculate(mTask: Task) {
         val bytes = ByteArray(1024 * 4)
         val callback = mOnDownloadHashMap[mTask.url]
-//        try {
-//            val total = mTask.contentSize
-//            var sum: Long = 0
-//
-//            val buffer = ByteArray(1024 * 2)
-//            var len: Int
-//            while (mTask.inputStream!!.read(buffer).also { len = it } != -1) {
-//                mTask.fileOutputStream!!.write(buffer, 0, len)
-//                sum += len.toLong()
-//                val progress = (sum * 1.0f / total * 100).toInt()
-//                // 下载中
-//                mHandler.post {
-//                    callback?.first?.invoke(
-//                        mTask.url,
-//                        progress
-//                    )
-//
-//                }
-//            }
-//            mTask.fileOutputStream!!.flush()
-//            mHandler.post {
-//                callback?.second?.invoke(mTask.url, mTask.file)
-//            }
-//        } catch (e: IOException) {
-//            mHandler.post {
-//                callback?.third?.invoke(mTask.url, "")
-//            }
-//        } finally {
-//            mTask.inputStream!!.close()
-//            mTask.fileOutputStream!!.close()
-//        }
-
         try {
             while (true) {
                 if (mTask.status == DownloadStatus.PAUSED) {
@@ -262,16 +214,11 @@ internal class Downloader private constructor() {
                         mTask.url,
                         ((mTask.hasDownloadSize * 1f / mTask.contentSize) * 100).toInt()
                     )
-
                 }
             }
         } catch (e: Exception) {
             e.localizedMessage?.let { Log.e(TAG, it) }
             mTask.inputStream!!.close()
-
         }
-
-
     }
-
 }

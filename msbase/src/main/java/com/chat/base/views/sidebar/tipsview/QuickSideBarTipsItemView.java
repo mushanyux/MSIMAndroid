@@ -16,9 +16,6 @@ import android.view.View;
 import com.chat.base.R;
 
 
-/**
- * Created by Sai on 16/3/28.
- */
 public class QuickSideBarTipsItemView extends View {
     private int mCornerRadius;
 

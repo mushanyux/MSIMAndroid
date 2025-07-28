@@ -25,7 +25,7 @@ public abstract class BaseObserver<T> implements Observer<T> {
 
     @Override
     public void onNext(@NotNull T t) {
-        //这里直接返回服务器的结果，因为该结果就是你需要的数据。无需在获取data，code，msg啥的了，给后端点个赞
+        //这里直接返回服务器的结果，因为该结果就是你需要的数据。
         onSuccess(t);
     }
 
