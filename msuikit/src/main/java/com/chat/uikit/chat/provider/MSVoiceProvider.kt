@@ -268,9 +268,8 @@ class MSVoiceProvider : MSChatBaseProvider() {
         if (list.isNotEmpty()) {
             for (i in list.indices) {
                 val mMsg = list[i].msMsg
-                if (mMsg != null && mMsg.type == MSContentType.MS_VOICE && mMsg.clientMsgNO != clientMsgNO && mMsg.voiceStatus == 0 && !TextUtils.isEmpty(
-                        mMsg.fromUID
-                    )
+                if (mMsg != null && mMsg.type == MSContentType.MS_VOICE && mMsg.clientMsgNO != clientMsgNO
+                    && mMsg.voiceStatus == 0 && !TextUtils.isEmpty(mMsg.fromUID)
                     && mMsg.fromUID != MSConfig.getInstance().uid
                 ) {
                     val tempPlayBtn =
