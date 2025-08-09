@@ -45,7 +45,7 @@ public class KeyboardOnGlobalChangeListener implements ViewTreeObserver.OnGlobal
             int keyboardHeight = hight - displayHight - statusBarHeight;
             iSoftKeyBoardStatus.onStatus(1);
             iSoftKeyBoardStatus.onKeyboardHeight(keyboardHeight);
-            //showKeyboardTopPopupWindow(getScreenWidth() / 2, keyboardHeight);
+            //shoMseyboardTopPopupWindow(getScreenWidth() / 2, keyboardHeight);
         } else {
             if (preShowing) {
                 iSoftKeyBoardStatus.onStatus(0);

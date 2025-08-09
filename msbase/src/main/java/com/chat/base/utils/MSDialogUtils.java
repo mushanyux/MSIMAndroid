@@ -239,7 +239,6 @@ public class MSDialogUtils {
                         public void onLoadCleared(@Nullable Drawable placeholder) {
                         }
                     })).start();
-//
         }
 
 
@@ -380,10 +379,8 @@ public class MSDialogUtils {
         versionTv.setText(String.format("%s：%s", context.getString(R.string.new_version), versionEntity.app_version));
         TextView cancelTv = view.findViewById(R.id.cancelTv);
         Button sureBtn = view.findViewById(R.id.sureBtn);
-        //ProgressBar progressBar = view.findViewById(R.id.progressBar);
         android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(context, R.style.AlertDialog);
         view.setBackgroundColor(ContextCompat.getColor(context, R.color.transparent));
-//        builder.setCancelable(versionEntity.is_force == 0);
         android.app.AlertDialog alertDialog = builder.create();
         alertDialog.setCanceledOnTouchOutside(versionEntity.is_force == 0);
         alertDialog.show();
@@ -395,11 +392,7 @@ public class MSDialogUtils {
         if (versionEntity.is_force == 1) {
             cancelTv.setVisibility(GONE);
         }
-//        param.height = WindowUtil.getInstance().getScreenHeight()/3;
         window.setAttributes(param);
-//            window.decorView.setPadding(0,0,0,0)
-//            window.decorView.setBackgroundColor(Color.RED)
-
 
         cancelTv.setOnClickListener(view1 -> {
             if (versionEntity.is_force == 0) {
