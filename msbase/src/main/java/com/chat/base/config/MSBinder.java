@@ -1,6 +1,6 @@
 package com.chat.base.config;
 
-import com.chat.base.BuildConfig.BuildConfig;
+import com.chat.base.BuildConfig;
 
 public class MSBinder {
     //    public static boolean isDebug =  false;

@@ -23,6 +23,7 @@ rootProject.name = "MSIMAndroid"
 include ':MyLibs:rlottie'
 include ':MyLibs:oppopush'
 include ':MyLibs:vivopush'
+include ':app'
 include ':msbase'
 include ':msuikit'
 include ':msscan'

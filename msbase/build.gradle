@@ -35,8 +35,10 @@ android {
         viewBinding true
         buildConfig true
     }
+    kotlinOptions {
+        jvmTarget = '17'
+    }
     namespace 'com.chat.base'
-
 }
 repositories {
 //    flatDir {
