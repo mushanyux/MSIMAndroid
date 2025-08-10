@@ -92,4 +92,5 @@ dependencies {
     implementation project(path: ':mslogin')
     implementation project(path: ':msscan')
     implementation project(path: ':mspush')
+    implementation libs.androidx.junit
 }

@@ -92,7 +92,6 @@ class MSApplication : MultiDexApplication() {
     }
 
     private fun initAll() {
-
         MSMultiLanguageUtil.getInstance().init(this)
         MSBaseApplication.getInstance().init(getAppPackageName(), this)
         Theme.applyTheme()
@@ -108,7 +107,7 @@ class MSApplication : MultiDexApplication() {
     private fun initApi() {
         var apiURL = MSSharedPreferencesUtil.getInstance().getSP("api_base_url")
         if (TextUtils.isEmpty(apiURL)) {
-            apiURL = "https://api.botgate.cn"
+            apiURL = "https://api.****.cn"
             MSApiConfig.initBaseURL(apiURL)
         } else {
             MSApiConfig.initBaseURLIncludeIP(apiURL)
